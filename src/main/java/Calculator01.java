@@ -19,22 +19,24 @@ public class Calculator01 {
         return scan.next();
     }
 
-    public static Float solve(Float[] f, String o) throws Exception {
-        try {
-            if (o.equals("+")) {
-            return f[0] + f[1];
-        } else if (o.equals("-")) {
-            return f[0] - f[1];
-        } else if (o.equals("*")) {
-            return f[0] * f[1];
-        } else if (o.equals("/")) {
-            return f[0] / f[1];
-        }
-            throw new IllegalArgumentException("Unknown operator: " + o);
-        }catch(Error e) {
-        System.out.println(e.getCause());
-        throw e;
-        }
+    public static Float solve(Float[] f, String o)  {
+
+            if(o.equals("+")) {
+                return f[0] + f[1];
+            } else if (o.equals("-")) {
+                return f[0] - f[1];
+            } else if (o.equals("*")) {
+             return f[0] * f[1];
+            } else if (o.equals("/")) {
+                    if(f[1] == 0) {
+                        throw new ArithmeticException("Division By Zero");
+                    }else {
+                        return f[0] / f[1];
+                    }
+            } else{
+                throw new IllegalArgumentException("Unknown operator: " + o);
+            }
+
     }
 
     public static void main(String args[]) {
@@ -43,7 +45,7 @@ public class Calculator01 {
         try{
             System.out.println("Result is : "+solve(f,o));
         } catch (Exception e){
-            System.out.println("herre " + e);
+            System.out.println("here " + e);
         }
     }
 }
